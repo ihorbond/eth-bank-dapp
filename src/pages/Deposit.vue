@@ -1,8 +1,8 @@
 <template>
-  <q-page padding>
+    <q-page padding>
     <div class="column">
       <div>
-        <h3 class="center">How much would you like to withdraw today ?</h3>
+        <h3 class="center">How much would you like to deposit today ?</h3>
       </div>
       <div class="row q-col-gutter-sm">
         <div class="col-4">
@@ -10,39 +10,35 @@
             <template v-slot:append>
               <q-icon name="fab fa-ethereum" />
             </template>
-            <template v-slot:hint> Available: {{ balance }} </template>
+            <template v-slot:hint> Min 0.01 ETH </template>
           </q-input>
         </div>
         <div class="col-8">
           <q-btn
+            bottom-slots
             size="lg"
             :loading="isLoading"
             color="secondary"
-            label="Withdraw"
-            @click="withdraw"
+            label="Deposit"
+            @click="deposit"
           />
         </div>
       </div>
     </div>
-  </q-page>
+    </q-page>
 </template>
 
 <script>
-import AccountMixin from "@/mixins/account";
-
 export default {
-  mixins: [AccountMixin],
-  data() {
-    return {
-      amount: null,
-    };
-  },
-  methods: {
-    withdraw() {
-      this.isLoading = true;
-      console.log("withdawing");
-      this.isLoading = false;
+    data() {
+        return {
+            amount: null
+        }
     },
-  },
-};
+    methods: {
+        deposit() {
+            console.log(this.amount);
+        }
+    }
+}
 </script>

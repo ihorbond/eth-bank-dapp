@@ -27,9 +27,15 @@
     >
       <q-list>
         <q-item-label header>Welcome back!</q-item-label>
-        <q-skeleton v-if="isLoading" type="rect" />
-        <q-item-label v-else>Balance: {{balance}} ETH</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+        <q-item clickable :to="{ name: 'Home' }">
+          <q-item-section avatar>
+            <q-icon name="fas fa-home" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Home</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable :to="{ name: 'Deposit' }">
           <q-item-section avatar>
             <q-icon name="fas fa-piggy-bank" />
           </q-item-section>
@@ -37,12 +43,7 @@
             <q-item-label>Deposit</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item
-          clickable
-          tag="a"
-          target="_blank"
-          href="https://github.com/quasarframework/"
-        >
+        <q-item clickable :to="{ name: 'Withdraw' }">
           <q-item-section avatar>
             <q-icon name="fas fa-money-check-alt" />
           </q-item-section>
@@ -60,41 +61,14 @@
 </template>
 
 <script>
-import Web3 from "web3";
-
 
 export default {
   name: "LayoutDefault",
   
   data() {
     return {
-      leftDrawerOpen: false,
-      isLoading: true,
-      balance: 0,
-      account: ''
+      leftDrawerOpen: false
     };
-  },
-
-  async beforeMount() {
-    if (typeof window.ethereum === "undefined") {
-      alert("Metamask is not installed");
-      return;
-    }
-
-    const web3 = new Web3(window.ethereum);
-    const networkId = await web3.eth.net.getId();
-    const accounts = await web3.eth.requestAccounts();
-
-    if (accounts.length) {
-      this.account = accounts[0];
-      const balance = await web3.eth.getBalance(accounts[0]);
-      this.balance = web3.utils.fromWei(balance);
-      console.log(networkId, this.balance);
-    } else {
-      console.debug("No accounts found");
-    }
-
-    this.isLoading = false;
   },
 
 };
