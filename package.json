@@ -1,9 +1,7 @@
 {
   "name": "dbank",
   "version": "0.1.0",
-  "type": "module",
   "description": "Decentralized Bank",
-  "homepage": ".",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,6 +9,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "3.3.0",
+    "@quasar/extras": "^1.0.0",
     "@truffle/hdwallet-provider": "1.1.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^5.0.2",
@@ -19,6 +18,7 @@
     "chai-bignumber": "3.0.0",
     "core-js": "^3.6.5",
     "dotenv": "8.2.0",
+    "quasar": "^1.0.0",
     "truffle": "5.1.63",
     "truffle-hdwallet-provider-privkey": "0.3.0",
     "vue": "^2.6.11",
@@ -33,6 +33,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.13.0",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
@@ -41,5 +42,7 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "homepage": ".",
+  "type": "module"
 }
