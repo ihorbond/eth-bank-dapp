@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    Hello World
+    <q-bar>
+      <div class="cursor-pointer gt-md">File</div>
+      <div class="cursor-pointer gt-md">Edit</div>
+      <div class="cursor-pointer gt-md">View</div>
+      <div class="cursor-pointer gt-md">Window</div>
+      <div class="cursor-pointer gt-md">Help</div>
+    </q-bar>
     <bank />
   </div>
 </template>

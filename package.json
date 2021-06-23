@@ -12,15 +12,17 @@
   "dependencies": {
     "@openzeppelin/contracts": "3.3.0",
     "@truffle/hdwallet-provider": "1.1.0",
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^5.0.2",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "chai-bignumber": "3.0.0",
+    "core-js": "^3.6.5",
     "dotenv": "8.2.0",
     "truffle": "5.1.63",
     "truffle-hdwallet-provider-privkey": "0.3.0",
-    "web3": "1.2.6"
+    "vue": "^2.6.11",
+    "web3": "^1.2.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -34,6 +36,7 @@
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-quasar": "^3.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
