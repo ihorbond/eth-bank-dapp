@@ -6,7 +6,13 @@
       </div>
       <div class="row q-col-gutter-sm">
         <div class="col-3">
-          <q-input color="teal" bottom-slots outlined v-model="amount" label="Amount">
+          <q-input
+            color="teal"
+            bottom-slots
+            outlined
+            v-model="amount"
+            label="Amount"
+          >
             <template v-slot:append>
               <q-icon name="fab fa-ethereum" />
             </template>
@@ -42,23 +48,20 @@ export default {
     };
   },
   methods: {
-    withdraw() {
-
+    async withdraw() {
       if (this.amount < 0.01) {
         alert("Min amount is 0.01");
         return;
       }
 
       try {
-  
         this.isLoading = true;
-  
-        this.dbank.methods.withdraw().send({
+
+        await this.dbank.methods.withdraw().send({
           value: this.toWei(this.amount).toString(),
-          from: this.account
-        })
-  
-      } catch(e) {
+          from: this.account,
+        });
+      } catch (e) {
         console.error(e);
       } finally {
         this.isLoading = false;

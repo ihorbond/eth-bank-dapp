@@ -14,7 +14,7 @@
         <q-toolbar-title> DBank App </q-toolbar-title>
 
         <div>
-          <img width="40px" height="40px" src="./dbank.png" alt="logo" />
+          <img width="40px" height="40px" src="./assets/dbank.png" alt="logo" />
         </div>
       </q-toolbar>
     </q-header>
