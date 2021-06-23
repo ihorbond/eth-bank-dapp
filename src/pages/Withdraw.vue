@@ -5,16 +5,17 @@
         <h3 class="center">How much would you like to withdraw today ?</h3>
       </div>
       <div class="row q-col-gutter-sm">
-        <div class="col-4">
+        <div class="col-3">
           <q-input color="teal" bottom-slots outlined v-model="amount" label="Amount">
             <template v-slot:append>
               <q-icon name="fab fa-ethereum" />
             </template>
-            <template v-slot:hint> Available: {{ balance }} </template>
+            <template v-slot:hint>Available: {{ balance }} </template>
           </q-input>
         </div>
-        <div class="col-8">
+        <div class="col-9">
           <q-btn
+            :disabled="amount < 0.01"
             size="lg"
             :loading="isLoading"
             color="secondary"
@@ -22,6 +23,9 @@
             @click="withdraw"
           />
         </div>
+      </div>
+      <div v-if="isLoading">
+        <q-linear-progress query color="cyan" class="q-mt-sm" />
       </div>
     </div>
   </q-page>
@@ -39,9 +43,26 @@ export default {
   },
   methods: {
     withdraw() {
-      this.isLoading = true;
-      console.log("withdawing");
-      this.isLoading = false;
+
+      if (this.amount < 0.01) {
+        alert("Min amount is 0.01");
+        return;
+      }
+
+      try {
+  
+        this.isLoading = true;
+  
+        this.dbank.methods.withdraw().send({
+          value: this.toWei(this.amount).toString(),
+          from: this.account
+        })
+  
+      } catch(e) {
+        console.error(e);
+      } finally {
+        this.isLoading = false;
+      }
     },
   },
 };
